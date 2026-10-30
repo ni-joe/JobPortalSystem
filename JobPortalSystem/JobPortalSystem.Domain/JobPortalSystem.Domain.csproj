@@ -11,7 +11,16 @@
     <Folder Include="Extensions\" />
     <Folder Include="Helpers\" />
     <Folder Include="Models\" />
-    <Folder Include="Services\" />
+    <Folder Include="Services\AuthUser\DTOs\" />
+    <Folder Include="Services\AuthUser\Interfaces\" />
+    <Folder Include="Services\Login\DTOs\" />
+    <Folder Include="Services\Login\Interfaces\" />
+    <Folder Include="Services\Profile\DTOs\" />
+    <Folder Include="Services\Profile\Interfaces\" />
+    <Folder Include="Services\SignUp\DTOs\" />
+    <Folder Include="Services\SignUp\Interfaces\" />
+    <Folder Include="Services\User\DTOs\" />
+    <Folder Include="Services\User\Interfaces\" />
   </ItemGroup>
 
 </Project>
