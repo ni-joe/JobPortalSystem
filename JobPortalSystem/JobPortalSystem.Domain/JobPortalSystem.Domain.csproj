@@ -10,7 +10,6 @@
     <Folder Include="Enums\" />
     <Folder Include="Extensions\" />
     <Folder Include="Helpers\" />
-    <Folder Include="Models\" />
     <Folder Include="Services\AuthUser\DTOs\" />
     <Folder Include="Services\AuthUser\Interfaces\" />
     <Folder Include="Services\Login\DTOs\" />
