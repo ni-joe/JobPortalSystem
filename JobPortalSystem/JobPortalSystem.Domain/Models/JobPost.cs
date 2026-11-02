@@ -9,37 +9,59 @@ namespace JobPortalSystem.Domain.Models
     public class JobPost
     {
         [Key]
-        public int Job_ID { get; set; }
-
-        [ForeignKey("JobProvider")]
-        public int JobProvider_ID { get; set; }
-        public virtual JobProvider JobProvider { get; set; }
-
-        [ForeignKey("Company")]
-        public int Company_ID { get; set; }
-        public virtual Company Company { get; set; }
-
-        public int Category_ID { get; set; }
-        public int Location_ID { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
         [MaxLength(150)]
-        public string Job_Name { get; set; }
+        public string JobTitle { get; set; } = string.Empty;
 
-        [MaxLength(50)]
-        public string Job_Type { get; set; }
+        [Required]
+        [MaxLength(3000)]
+        public string JobSummary { get; set; } = string.Empty;
 
-        public string Job_Requirement { get; set; }
+        [Required]
+        public Guid LocationId { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal Minimum_Salary { get; set; }
+        [ForeignKey(nameof(LocationId))]
+        public virtual Location Location { get; set; } = null!;
 
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal Maximum_Salary { get; set; }
+        [Required]
+        public Guid CompanyId { get; set; }
 
-        public DateTime Job_Post_Expiry_Date { get; set; }
+        [ForeignKey(nameof(CompanyId))]
+        public virtual JobProviderCompany Company { get; set; } = null!;
 
-        [MaxLength(50)]
-        public string Status { get; set; }
+        [Required]
+        public Guid CategoryId { get; set; }
+
+        [ForeignKey(nameof(CategoryId))]
+        public virtual JobCategory JobCategory { get; set; } = null!;
+
+        [Required]
+        public Guid IndustryId { get; set; }
+
+        [ForeignKey(nameof(IndustryId))]
+        public virtual Industry Industry { get; set; } = null!;
+
+        [Required]
+        public Guid PostedBy { get; set; }
+
+        [ForeignKey(nameof(PostedBy))]
+        public virtual CompanyUser PostedByNavigation { get; set; } = null!;
+
+        [Required]
+        public DateTime PostedDate { get; set; } = DateTime.UtcNow;
+
+        public virtual ICollection<JobResponsibility> JobResponsibilities
+        { get; set; } = new List<JobResponsibility>();
+
+        public virtual ICollection<JobApplication> JobApplications
+        { get; set; } = new List<JobApplication>();
+
+        public virtual ICollection<SavedJob> SavedJobs
+        { get; set; } = new List<SavedJob>();
+
+        public virtual ICollection<Interview> Interviews
+        { get; set; } = new List<Interview>();
     }
 }
