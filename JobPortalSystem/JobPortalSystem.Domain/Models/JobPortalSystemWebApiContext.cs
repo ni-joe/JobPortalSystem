@@ -47,6 +47,16 @@ namespace JobPortalSystem.Domain.Models
         {
             base.OnModelCreating(modelBuilder);
 
+            base.OnModelCreating(modelBuilder);
+
+            foreach (var foreignKey in modelBuilder.Model
+                .GetEntityTypes()
+                .Where(e => e.ClrType.Name == "JobPost")
+                .SelectMany(e => e.GetForeignKeys()))
+            {
+                foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
+            }
+
             // Prevent duplicate CompanyUser emails
             modelBuilder.Entity<CompanyUser>()
                 .HasIndex(x => x.Email)
