@@ -11,6 +11,7 @@
     <Folder Include="Helpers\" />
     <Folder Include="Services\AuthUser\DTOs\" />
     <Folder Include="Services\AuthUser\Interfaces\" />
+    <Folder Include="Services\JobProvider\Interfaces\" />
     <Folder Include="Services\Login\DTOs\" />
     <Folder Include="Services\Login\Interfaces\" />
     <Folder Include="Services\Profile\DTOs\" />
